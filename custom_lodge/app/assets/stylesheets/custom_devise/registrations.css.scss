@@ -1,0 +1,61 @@
+// Place all the styles related to the custom_devise/registrations controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+label {
+  vertical-align: middle;
+
+  input {
+    vertical-align: middle;
+  }
+}
+
+div {
+}
+
+.devise-form {
+  background-color: rgba(255,255,255,.6);
+  border: 1px solid #aaa;
+  border-radius: 6px;
+  padding: 15px; 
+  dl {
+    margin: 0;
+    dd {
+      margin: 0 0 10px 0;
+
+      input {
+        width: 400px;
+      }
+    }
+  }
+}
+
+#devise-links-area {
+  margin: 15px 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    margin: 10px 0;
+  }
+}
+
+#remember-checkbox-area {
+  margin: 5px;
+}
+
+// added to adjust layout around checkbox @ custom_v0.0.1
+#not-new-password-area {
+  dt.checkbox-area {
+    font-size: 18px;
+    margin-bottom: 5px;
+    span.label {
+      margin-left: 5px;
+    }
+  }
+}
+
+#new-password-area {
+  border: 1px solid #aaa;
+  border-radius: 6px;
+  padding: 10px;
+}

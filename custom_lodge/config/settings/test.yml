@@ -1,0 +1,9 @@
+# mod @ custom_v0.0.1
+test:
+  notify:
+    from: noreply_lodge@example.com
+    notice_email:
+      article:
+        body: "hello world\nthis is article body."
+      comment:
+        body: "hello\nthis is comment body"

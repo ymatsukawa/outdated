@@ -1,0 +1,93 @@
+<div class="panel">
+
+  <div class="article-header-area panel-heading clearfix">
+    <div class="pull-right clearfix">
+      <% is_owner = @article.user_id == current_user.id %>
+      <% if is_owner || @article.is_public_editable %>
+        <%= link_to tco('edit'), edit_article_path(@article) %>
+      <% end %>
+      <% if @article.update_histories.size > 0 %>
+        <% histories_title = ! is_owner && ! @article.is_public_editable ? tc(:update_histories) : '' %>
+        <%= link_to "#{histories_title}(#{@article.update_histories.size})", article_update_histories_path(@article) %>
+      <% end %>
+      <% if is_owner %>
+        |
+        <%= link_to tco('destroy'), @article, method: :delete, data: { confirm: tco(:are_you_sure)} %>
+      <% end %>
+    </div>
+  
+    <h1><%= @article.title %></h1>
+    <hr class='article-title-underline' />
+  </div>
+
+  
+  <div class="article-detail-area panel-body">
+    <div class="text-right">
+      <%= tco :created_at  %>:
+      <span class="dropdown created-by">
+        <%= render partial: "users/info_dropdown", locals: {user: @article.user} %> -
+      </span>
+      <%= @article.created_at %>
+      <% if @article.update_histories.size > 0 %>
+        |
+        <%= tco :updated_at  %>:
+        <span class="dropdown updated-by">
+          <%= render partial: "users/info_dropdown", locals: { user: @article.last_updated_user } %> -
+        </span>
+        <%= @article.updated_at %>
+      <% end %>
+    </div>
+    <div class="pull-right text-right">
+      <% @article.tags.each do |tag| %>
+        <%= link_to tag.name, tagged_articles_path(tag.name), class: ["label", "label-default"] %>
+      <% end %>
+      <%= render partial: "articles/stock_users", locals: {article: @article} %>
+      <%= render partial: "articles/stock_text", locals: {article: @article} %>
+      <%= render partial: "articles/stock_count", locals: {article: @article} %>
+      <%= render partial: "articles/comment_count", locals: {article: @article} %>
+    </div>
+  </div>
+
+  <div class="panel-body markdown codehilite">
+    <%= markdown_toc(@article.body).html_safe %>
+    <%= markdown(@article.body).html_safe %>
+  </div>
+</div>
+
+<h2 id="comment-list-title" class="lead"><%= tc :comments_title %></h2>
+
+<ul class="list-group">
+  <% if @article.comments.blank? %>
+    <li class="list-group-item">Nothing...</li>
+  <% else %>
+    <% @article.comments.each do |comment| %>
+      <li class="list-group-item">
+        <div class="comment-info list-group-item-heading">
+          <div class="comment-info dropdown"><%= render partial: "users/info_dropdown", locals: {user: comment.user} %></div>
+          <div class="comment-info date-time">
+            <%= comment.updated_at %>
+            <% if comment.user == current_user %> 
+              |
+              <%= content_tag :a, tco('edit'), class: "comment-edit-link", "data-toggle" => "collapse", "data-target" => "[action='#{comment_path(comment)}']" %>
+              |
+              <%= link_to tco('destroy'), comment, method: :delete, data: { confirm: tco(:are_you_sure)} %>
+            <% end %>
+          </div>
+        </div>
+        <div class="list-group-body markdown codehilite">
+          <%= markdown(comment.body).html_safe %>
+        </div>
+        <% if comment.user == current_user %> 
+          <%= render 'comments/form', hide: true, comment: comment %>
+        <% end %>
+      </li>
+    <% end %>
+  <% end %>
+</ul>
+
+<h2 class="lead"><%= tc :comment_form_title %></h2>
+<%= render 'comments/form', hide: false, comment: Comment.new %>
+
+<p>
+  <%= link_to tco(:back), @pre_accessable_url %>
+</p>

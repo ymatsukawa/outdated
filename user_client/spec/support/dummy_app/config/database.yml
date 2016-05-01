@@ -1,0 +1,7 @@
+default: &default
+  adapter: sqlite3
+  pool: 5
+  timeout: 5000
+test:
+  <<: *default
+  database: spec/support/dummy_app/db/test.sqlite3

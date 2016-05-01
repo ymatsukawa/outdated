@@ -1,0 +1,38 @@
+<h2><%= tc :edit_title %></h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "devise-form" }) do |f| %>
+  <%= devise_error_messages! %>
+
+  <dl id="not-new-password-area">
+    <dt><%= tc :name %></dt>
+    <dd><%= f.text_field :name, autofocus: true, class: ["form-control"] %></dd>
+    <dt><%= tc :email %></dt>
+    <dd><%= f.email_field :email, class: ["form-control"] %></dd>
+    <dt><%= tc :current_password %></dt>
+    <dd><%= f.password_field :current_password, autocomplete: "off", class: ["form-control"] %></dd>
+    <!-- added element @ custom_v0.0.1 -->
+    <dt class="checkbox-area"><%= f.check_box :notice_mail_send_state, checked: notice_mail_send? %><span class="label"><%= tc :notice_mail_send_state %></span></dt>
+    <!-- end v0.0.1 -->
+  </dl>
+  <dl id="new-password-area" class="new-password-area">
+    <dt><%= tc :password %><i></i></dt>
+    <dd><%= f.password_field :password, autocomplete: "off", class: ["form-control"] %></dd>
+    <dt><%= tc :password_confirmation %></dt>
+    <dd><%= f.password_field :password_confirmation, autocomplete: "off", class: ["form-control"] %></dd>
+  </dl>
+
+  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+  <% end %>
+
+
+  <p><%= f.submit tco(:update), class: ["btn", "btn-success"] %></p>
+<% end %>
+
+<h3><%= tc :freeze_account %></h3>
+
+<p>
+  <%= button_to tco(:freeze), registration_path(resource_name), data: { confirm: tc(:account_delete_confirm) }, method: :delete, class: ["btn", "btn-danger"] %>
+</p>
+
+<%= link_to tco(:back), :back %>

@@ -1,0 +1,20 @@
+# mod below line 5 @ custom_v0.0.1
+lodge:
+  per_size: 30
+  right_list_size: 15
+  global:
+    uri:
+      scheme: http
+      host: localhost # change to your settings
+      port: '3000' # change to your settings
+  comment:
+    reply_title:
+      head: 'Re: '
+  notify:
+    from: <%= ENV['MAIL_SENDER'] %>
+    notice_email:
+      subject:
+        head: '[Lodge]'
+  notifier:
+    error:
+      implementation_error: '@app/models/notifier#breakdown, "scheme" may be mistaken'

@@ -1,0 +1,22 @@
+request:
+  permitted_class:
+    - String
+    - Fixnum
+  permitted_property:
+    - email
+    - name
+    - password
+  format:
+    id: '\d+'
+    email: '[^@]+@([^@\.]+\.)+[^@\.]+'
+model:
+  format:
+    not_identifier: '[ -~]+'
+response:
+  respond_column:
+    - id
+    - email
+    - name
+    - password
+    - created_at
+    - updated_at

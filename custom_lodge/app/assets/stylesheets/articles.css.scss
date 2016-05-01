@@ -1,0 +1,68 @@
+// Place all the styles related to the articles controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.article-table {
+  colgroup:first-child {
+    width: 40%;
+  }
+  colgroup:last-child {
+    width: 60%;
+  }
+}
+
+.article-title-underline {
+  border-color: #ddd;
+  margin: 0;
+}
+
+.article-detail-area {
+  line-height: 2em;
+}
+
+.comment-info {
+  &.list-group-item-heading {
+    margin-bottom: 1.5em;
+  }
+
+  &.dropdown {
+    float: left;
+  }
+
+  &.date-time {
+    text-align: right;
+  }
+}
+
+.form-editor {
+  position: relative;
+
+  .toggle-markdown-help {
+    cursor: pointer;
+    position: absolute;
+    top: 28px;
+    right: 0;
+
+    &:before {
+      padding-right: 5px;
+      vertical-align: middle;
+    }
+  }
+
+  .modal-markdown-help {
+    .modal-body {
+      overflow: auto;
+
+      table {
+        th {
+          padding: 10px;
+          text-align: center;
+        }
+
+        td {
+          padding: 10px;
+        }
+      }
+    }
+  }
+}

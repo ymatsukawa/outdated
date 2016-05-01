@@ -1,0 +1,13 @@
+// Place all the styles related to the tags controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.tag-table {
+  colgroup:first-child {
+    width: 60%;
+  }
+  colgroup:last-child {
+    width: 40%;
+    white-space: nowrap;
+  }
+}

@@ -1,0 +1,10 @@
+scss:
+  enabled: false
+coffeescript:
+  enabled: false
+haml:
+  enabled: false
+javascript:
+  enabled: false
+ruby:
+  config_file: .ruby-style.yml

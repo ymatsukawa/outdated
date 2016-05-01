@@ -1,0 +1,10 @@
+<% # added @ custom_v0.0.1 %>
+<% if @resource.eql?('article') %>
+  <%= 'New article: ' + @bodies[:subject] %>
+<% else %>
+  <%= 'Commented at: ' + @bodies[:subject] %>
+<% end %>
+  <%= send_uri('show', @scheme, @host, @port, 'articles', @bodies[:article_id].to_s) %>
+
+<%= '-'.rjust(10, '-') %>
+<%= @bodies[:body] %>
