@@ -1,0 +1,5 @@
+#!/bin/bash
+
+bundle install
+rake root_project:prepare
+rake slack_api:prepare

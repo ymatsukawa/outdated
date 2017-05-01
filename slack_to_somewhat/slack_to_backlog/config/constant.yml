@@ -1,0 +1,43 @@
+defaults: &defaults
+  api:
+    backlog: &api_backlog
+      request:
+        permitted_keys:
+          - :message
+    external: &api_external
+      response:
+        error:
+          internal_server_error: 'internal server error'
+          format_error: 'your input format is invalid. see official doc.'
+          attributes_include_blank: 'check whether inputs include blank.'
+
+development:
+  <<: *defaults
+  api:
+    backlog:
+      <<: *api_backlog
+      space_id: <%= ENV['BACKLOG_API_DEV_SPACE_ID'] %>
+      api_key: <%= ENV['BACKLOG_API_DEV_KEY'] %>
+    external:
+      <<: *api_external
+
+test:
+  <<: *defaults
+  api:
+    backlog:
+      <<: *api_backlog
+      endpoint: "https://testspace.backlog.jp/api/v2"
+      space_id: 'testspace'
+      api_key: 'testkey'
+    external:
+      <<: *api_external
+
+production:
+  <<: *defaults
+  api:
+    backlog:
+      <<: *api_backlog
+      space_id: <%= ENV['BACKLOG_API_PRODUCTION_SPACE_ID'] %>
+      api_key: <%= ENV['BACKLOG_API_PRODUCTION_KEY'] %>
+    external:
+      <<: *api_external

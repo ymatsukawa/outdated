@@ -1,0 +1,3 @@
+web: BUNDLE_GEMFILE="./Gemfile" DEV_HOST_BACKLOG_KIT="localhost:3100" LAUNCH_ENV=development rails s
+mockserver: rake mock_server:run
+slack: BUNDLE_GEMFILE="vendor/slack_api/Gemfile" ruby vendor/slack_api/slackRTM.rb

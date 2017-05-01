@@ -1,0 +1,2 @@
+web: BUNDLE_GEMFILE="./Gemfile" LAUNCH_ENV=production rails s
+slack: BUNDLE_GEMFILE="vendor/slack_api/Gemfile" ruby vendor/slack_api/slackRTM.rb

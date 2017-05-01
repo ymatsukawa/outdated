@@ -1,0 +1,13 @@
+#!/bin/bash
+
+case $1 in
+  "dev" )
+    echo "launched develop mode"
+    foreman start -f Procfile.dev
+    ;;
+  "production" )
+    foreman start
+    ;;
+  *)
+    echo 'bin/foreman dev || bin/foreman production'
+esac

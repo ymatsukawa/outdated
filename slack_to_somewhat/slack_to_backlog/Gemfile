@@ -1,0 +1,39 @@
+source 'https://rubygems.org'
+
+git_source(:github) do |repo_name|
+  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
+  "https://github.com/#{repo_name}.git"
+end
+
+
+# stack to 5.0.1 because using ActiveSupport#camelize_keys!
+gem 'rails', '= 5.0.1'
+
+gem 'sqlite3'
+gem 'puma', '~> 3.0'
+gem 'settingslogic'
+gem 'json'
+gem 'foreman'
+
+gem 'backlog_kit', path: "./vendor/backlog_kit"
+
+group :development, :test do
+  gem 'pry-byebug'
+end
+
+group :development do
+  gem 'listen', '~> 3.0.5'
+  gem 'spring'
+  gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'sinatra', github: 'sinatra'
+  # https://github.com/mperham/sidekiq/issues/2839
+  # http://d.hatena.ne.jp/shokai/20120304/1330845739
+  # https://devcenter.heroku.com/articles/getting-started-with-ruby-o#declare-process-types-with-procfile
+end
+
+group :test do
+  gem 'webmock'
+  gem 'rspec'
+  gem 'rspec-rails'
+  gem 'rspec-parameterized'
+end

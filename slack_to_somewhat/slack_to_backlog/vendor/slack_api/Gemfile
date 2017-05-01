@@ -1,0 +1,6 @@
+source 'https://rubygems.org'
+
+gem 'slack-ruby'
+gem 'eventmachine'
+gem 'faye-websocket'
+gem 'faraday'

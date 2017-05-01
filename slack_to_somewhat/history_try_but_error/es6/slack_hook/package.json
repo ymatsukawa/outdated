@@ -1,0 +1,30 @@
+{
+  "name": "slack_to_backlog",
+  "version": "0.0.1",
+  "description": "connection between botkit and rails.",
+  "main": "index.js",
+  "scripts": {
+    "build": "babel ./websocket --out-dir ./bundle --source-maps inline",
+    "debug": "yarn run build && node ./bundle/app.js debug",
+    "release": "yarn run build && node ./bundle/app.js",
+    "test": "jest"
+  },
+  "engine": {
+    "node": ">= 7.4.0"
+  },
+  "keywords": [],
+  "author": "ymatsukawa",
+  "license": "MIT",
+  "dependencies": {
+    "babel-cli": "^6.22.2",
+    "babel-preset-es2015": "^6.22.0",
+    "babel-preset-stage-3": "^6.22.0",
+    "botkit": "^0.4.10",
+    "immutable": "^3.8.1",
+    "request": "^2.79.0",
+    "sleep": "^5.1.0"
+  },
+  "devDependencies": {
+    "jest": "^18.1.0"
+  }
+}

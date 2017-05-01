@@ -1,0 +1,5 @@
+#!/bin/bash
+
+lsof -i:3000 | awk '{print $2}' | grep '[0-9]' | xargs kill -9 # rails
+lsof -i:3100 | awk '{print $2}' | grep '[0-9]' | xargs kill -9 # sinatra
+rm tmp/pids/server.pid
