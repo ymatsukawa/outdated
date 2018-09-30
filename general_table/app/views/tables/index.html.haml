@@ -1,0 +1,17 @@
+=link_to 'system setting', management_base_tables_path
+=link_to 'input table data', new_table_path
+
+=form_tag({ controller: :tables, action: :index }, { method: :get }) do
+  =select_tag :base_table_id, options_for_select(@select_table_ids, @base_table_id), size: 5
+  =button_tag 'check', type: :submit
+
+- # MUST commonize as template
+- custom_field_num = @custom_fields.size
+%table
+  %tr
+    - @custom_fields.each do |custom_field|
+      %th= label_tag custom_field['description']
+  - @table_datas.each_with_index do |data, index|
+    - if (index % custom_field_num) == 0
+      %tr
+    %td= data['field_content']

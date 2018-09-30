@@ -1,0 +1,23 @@
+=link_to 'back', tables_path
+
+=form_tag({ controller: :tables, action: :new }, { method: :get }) do
+  =select_tag :base_table_id, options_for_select(@select_table_ids, @base_table_id), size: 5
+  =button_tag 'check', type: :submit
+
+=form_tag(controller: :tables, action: :create) do
+  = hidden_field_tag :base_table_id, @base_table_id # MUST validate base_table_id on model.
+  - @custom_fields.each do |custom_field|
+    = label_tag custom_field['description']
+    = text_field_tag "custom_field_id_#{custom_field['custom_field_id']}", nil, placeholder: custom_field['description']
+  =button_tag 'create data', type: :submit
+
+- # MUST commonize as template
+- custom_field_num = @custom_fields.size
+%table
+  %tr
+    - @custom_fields.each do |custom_field|
+      %th= label_tag custom_field['description']
+  - @table_datas.each_with_index do |data, index|
+    - if (index % custom_field_num) == 0
+      %tr
+    %td= data['field_content']

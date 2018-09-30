@@ -1,0 +1,102 @@
+defaults: &defaults
+  permitted_attributes:
+    tables:
+      - base_table_id
+    management:
+      base_tables:
+        - description
+      custom_fields:
+        - base_table_id
+        - description
+  sql:
+    select:
+      specific_table_datas: |
+        SELECT
+          GEN.row_num,
+          CF.custom_field_id,
+          CF.description,
+          GEN.field_content
+        FROM
+          general_tables GEN 
+        INNER JOIN
+          custom_field_descriptions AS CF
+        ON
+          GEN.custom_field_id = CF.custom_field_id
+        WHERE
+          base_table_id = $1
+        ORDER BY
+          GEN.row_num
+      base_table_descriptions: |
+        SELECT
+          base_table_id,
+          description
+        FROM
+          base_table_descriptions
+        ORDER BY
+          base_table_id
+      custom_field_descriptions: |
+        SELECT
+          CF.custom_field_id,
+          CF.description
+        FROM
+          custom_field_descriptions AS CF
+        INNER JOIN
+          management_base_table_custom_fields AS BASECF
+        ON
+          CF.custom_field_id = BASECF.custom_field_id
+        WHERE
+          BASECF.base_table_id = $1
+
+      latest_row_num: |
+        SELECT
+          row_num
+        FROM
+          general_tables
+        WHERE
+          base_table_id = $1
+        ORDER BY
+          row_num DESC
+        LIMIT 1
+    insert:
+      base_table_descriptions:
+        INSERT INTO
+          base_table_descriptions
+          (description, created_at, updated_at)
+        VALUES
+          ($1, NOW(), NOW())
+      base_tables: &insert_base_tables |
+        INSERT INTO
+          base_tables
+            (base_table_id, created_at, updated_at)
+          VALUES
+            ($1, NOW(), NOW())
+      base_tables_return_row_num:
+        INSERT INTO
+          base_tables
+            (base_table_id, created_at, updated_at)
+          VALUES
+            ($1, NOW(), NOW())
+          RETURNING base_row_num
+      custom_field_descriptions: |
+        INSERT INTO
+          custom_field_descriptions
+            (description, created_at, updated_at)
+          VALUES
+            ($1, NOW(), NOW())
+          RETURNING
+            custom_field_id
+      base_table_custom_fields: |
+        INSERT INTO
+          management_base_table_custom_fields
+            (base_table_id, custom_field_id)
+          VALUES
+            ($1, $2)
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults

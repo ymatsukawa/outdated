@@ -1,0 +1,24 @@
+=link_to 'back', tables_path
+
+- if flash[:success].present?
+  = flash[:success]
+- if flash[:error].present?
+  = flash[:error]
+
+=form_tag(controller: :base_tables, action: :create) do
+  =text_field_tag :description, nil, placeholder: 'input table summary'
+  =button_tag 'create new table', type: :submit
+
+- if @tables.blank?
+  %div define table
+- else
+  %table
+    %tr
+      %th table_id
+      %th summary
+      %th
+    - @tables.each do |table|
+      %tr
+        %td= table['base_table_id']
+        %td= table['description']
+        %td= link_to 'edit custom fields', management_custom_fields_path(table['base_table_id'])

@@ -1,0 +1,17 @@
+%div add attribute
+=form_tag(controller: :custom_fields, action: :create) do
+  =text_field_tag :description, nil, placeholder: 'input custom field description'
+  =button_tag 'add new attribute', type: :submit
+
+- if @custom_fields.blank?
+  %div no custom fields
+- else
+  %table
+    %th カスタム属性ID
+    %th 属性摘要
+    - @custom_fields.each do |field|
+      %tr
+        %td= field['custom_field_id']
+        %td= field['description']
+
+=link_to 'back', management_base_tables_path
