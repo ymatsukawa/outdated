@@ -1,0 +1,22 @@
+<% if flash[:error].present? %>
+ <pre>
+   <code>
+    <%= flash[:error] %>
+   </code/>
+ </pre>
+<% end %>
+<div id="edit">
+  <%= render 'form', note: @note %>
+  <%= render 'tag_form', note: @note, tag: @tag %>
+  <% if @tags.present? %>
+  <div id="tags">
+    <ul>
+    <% @tags.each do |tag| %>
+      <li>
+        <%= tag.name %>&nbsp;<%= link_to 'del', note_notes_tag_path(@note.id, tag.id), method: :delete %>
+      </li>
+    <% end %>
+    <ul>
+  </div>
+  <% end %>
+</div>

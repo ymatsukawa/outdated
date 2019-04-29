@@ -1,0 +1,14 @@
+<%= form_with(model: tag, local: true, url: note_notes_tags_path(note.id)) do |form| %>
+  <fieldset>
+    <div class="field">
+      <%= form.hidden_field :note_id, value: note.id %>
+    </div>
+    <div class="field">
+      <div><%= form.label :tag %></div>
+      <div><%= form.text_field :name %></div>
+    </div>
+    <div class="actions">
+      <%= form.submit %>
+    </div>
+  </fieldset>
+<% end %>

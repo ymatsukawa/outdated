@@ -1,0 +1,32 @@
+<div id="index">
+  <h2><%= current_user.name + "\'s notes" %></h2>
+  <table id="notetable">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Tags</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @notes.each do |note| %>
+        <tr>
+          <td><%= note.title %></td>
+          <td>
+          <% if note.tags.present? %>
+            <%= truncate(note.tags.map { |tag| "#{tag.name}" }.join(','), length: 50) %>
+          <% end %>
+          </td>
+          <td><%= link_to 'Show', note, class: 'button button-outline' %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <br>
+  <%= link_to 'New Note', new_note_path, class: 'button button-outline' %>
+  <hr />
+  <%= render 'search_notes' %>
+  <hr />
+  <%= render 'search_tag', tags: @tags %>
+</div>

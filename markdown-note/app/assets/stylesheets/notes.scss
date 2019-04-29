@@ -1,0 +1,45 @@
+div#index {
+  table#notetable {
+    td {
+      font-size: 15px;
+    }
+  }
+  select#name {
+    font-size: 15px;
+  }
+}
+
+form {
+  input, textarea {
+    font-size: 15px;
+  }
+
+  textarea {
+    resize: vertical;
+    min-height: 440px;
+  }
+}
+
+div#show {
+  div#markdown {
+    li, code {
+      font-size: 15px;
+    }
+
+    code {
+      font-weight: 400;
+    }
+  }
+}
+
+div#edit {
+  div#tags {
+    li {
+      font-size: 15px;
+    }
+  }
+
+  textarea {
+    font-size: 18px;
+  }
+}

@@ -1,0 +1,10 @@
+<%= form_with(url: search_path, method: :get, local: true) do |form| %>
+  <fieldset>
+    <div class="field">
+      <%= form.text_field :body, placeholder: 'search by note content' %>
+    </div>
+    <div class="actions">
+      <%= form.submit 'search by content' %>
+    </div>
+  </fieldset>
+<% end %>

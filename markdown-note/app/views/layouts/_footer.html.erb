@@ -1,0 +1,6 @@
+<hr />
+<nav class="navigation">
+  <% if current_user.present? %>
+    <%= link_to 'Home', notes_path, class: 'button button-outline' %>
+  <% end %>
+</nav>
