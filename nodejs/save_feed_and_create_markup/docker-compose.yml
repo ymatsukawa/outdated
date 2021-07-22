@@ -1,0 +1,39 @@
+version: '3'
+services:
+  app:
+    build: .
+    ports:
+      - '3000:3000'
+    volumes:
+      - .:/usr/src/app
+    command: bash -c 'yarn install && node ./app/index.js'
+    environment:
+      PGUSER: root
+      PGHOST: db
+      PGPASSWORD: pass
+      PGDATABASE: root
+    depends_on:
+      - db
+  db:
+    image: postgres:13.3
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: pass
+      POSTGRES_DB: root
+      TZ: "Asia/Tokyo"
+      PGTZ: "Asia/Tokyo"
+    volumes:
+      - ./db/initdb:/docker-entrypoint-initdb.d
+      - ./db:/usr/src/app/db
+    ports:
+      - '55432:5432'
+  jenkins:
+    image: jenkins/jenkins:lts-jdk11
+    ports:
+      - '8080:8080'
+      - '50000:50000'
+    volumes:
+      - './jenkins/home:/var/jenkins_home'
+    depends_on:
+      - app
+      - db
