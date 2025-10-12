@@ -1,0 +1,4 @@
+﻿[*.cs]
+
+# CS8612: 型における参照型の Null 許容性が、暗黙的に実装されるメンバーと一致しません。
+dotnet_diagnostic.CS8612.severity = none

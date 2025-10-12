@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="signal.MainPage">
+    <ContentPage.BindingContext
+        xmlns:local="clr-namespace:signal.ViewModel">
+        <local:MainVM />
+    </ContentPage.BindingContext>
+    <Grid
+        ColumnDefinitions="*,5,*">
+        <VerticalStackLayout
+                Margin="0,50,0,0"
+                Padding="30,0"
+                Spacing="25"
+                Grid.Column="0">
+            <Editor x:Name="editorResponseHeader"
+                    HeightRequest="200"
+                    IsReadOnly="True"
+                    AutoSize="TextChanges"
+                    PlaceholderColor="#626262"
+                    Text="{Binding ResHeader}">
+                <Editor.Placeholder>
+                    Response Header
+                </Editor.Placeholder>
+            </Editor>
+            <Button Text="COPY"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"
+                    Command="{Binding CommandCopyRes}"
+                    CommandParameter="header" />
+
+            <Editor x:Name="editorResponseBody"
+                    HeightRequest="340"
+                    IsReadOnly="True"
+                    AutoSize="TextChanges"
+                    PlaceholderColor="#626262"
+                    Text="{Binding ResBody}">
+                <Editor.Placeholder>
+                    Response Body
+                </Editor.Placeholder>
+            </Editor>
+            <Button Text="COPY"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"
+                    Command="{Binding CommandCopyRes}"
+                    CommandParameter="body" />
+        </VerticalStackLayout>
+
+        <VerticalStackLayout
+            Grid.Column="1" />
+
+        <VerticalStackLayout
+                Margin="0,50,0,0"
+                Padding="30,0"
+                Spacing="15"
+                Grid.Column="2">
+
+            <Button Text="Load"
+                    VerticalOptions="Center"
+                    HorizontalOptions="End"
+                    Command="{Binding CommandLoad}" />
+
+            <Picker x:Name="pickerHttpMethod"
+                    Title=""
+                    SelectedItem="{Binding Method}">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>GET</x:String>
+                        <x:String>POST</x:String>
+                        <x:String>PUT</x:String>
+                        <x:String>DELETE</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+
+            <Entry x:Name="entryUrl"
+                   Placeholder="https://example.com/"
+                   PlaceholderColor="#626262"
+                   Text="{Binding Url}"/>
+
+            <Editor x:Name="editorRequestHeader"
+                    HeightRequest="200"
+                    PlaceholderColor="#626262"
+                    Text="{Binding Header}">
+                <Editor.Placeholder>
+                    Accept-Charset: utf-8
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 17
+                </Editor.Placeholder>
+            </Editor>
+
+            <Editor x:Name="editorRequestBody"
+                    HeightRequest="250"
+                    PlaceholderColor="#626262"
+                    Text="{Binding Body}">
+                <Editor.Placeholder>
+                    x=value1&amp;y=value2
+                </Editor.Placeholder>
+            </Editor>
+
+            <Grid>
+                <Button Text="Request"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"
+                    Command="{Binding CommandRequest}" />
+                <Button Text="Save"
+                    VerticalOptions="Center"
+                    HorizontalOptions="End"
+                    Command="{Binding CommandSave}" />
+            </Grid>
+        </VerticalStackLayout>
+    </Grid>
+
+</ContentPage>
