@@ -1,0 +1,5 @@
+<%= form_with model: @article do |f| %>
+  <p><%= f.text_field :title %></p>
+  <p><%= f.text_area :text %></p>
+  <p><%= f.submit %></p>
+<% end %>

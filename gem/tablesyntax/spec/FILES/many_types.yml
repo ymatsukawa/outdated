@@ -1,0 +1,34 @@
+keys:
+- :title
+- :metadata
+table_kvs:
+- title: string single quote
+  metadata: 'abcdefg'
+- title: string double quote
+  metadata: "ABCDEFG"
+- title: symbol
+  metadata: :this_is_symbol
+- title: integer
+  metadata: 12345
+- title: array
+  metadata:
+    - 1
+    - 2
+    - 'a'
+    - 'b'
+- title: array in array
+  metadata:
+    - 1
+    - 2
+    -
+      - 'a'
+      - 'b'
+- title: deep hash
+  metadata:
+    root:
+      child:
+        data: 123
+- title: repeat string
+  metadata: "'a' * 5"
+- title: shows nil
+  metadata: nil

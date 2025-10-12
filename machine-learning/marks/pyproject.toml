@@ -1,0 +1,11 @@
+[project]
+name = "marks"
+version = "0.0.1"
+description = "markdown content parser"
+readme = "README.md"
+requires-python = ">=3.13.3"
+dependencies = [
+    "fastmcp>=2.11.3",
+    "markdown>=3.8.2",
+    "md-toc>=9.0.0",
+]

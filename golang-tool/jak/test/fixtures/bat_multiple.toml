@@ -1,0 +1,28 @@
+base_url = "http://api.example.com"
+timeout = 5
+concurrency = false
+ignore_fail = true
+
+[[request]]
+name = "Get Users"
+method = "GET"
+path = "/users"
+headers = ["Accept: application/json"]
+
+[[request]]
+name = "Create User"
+method = "POST"
+path = "/users"
+headers = ["Content-Type: application/json"]
+json_body = """
+{
+  "name": "Test User",
+  "email": "test@example.com"
+}
+"""
+
+[[request]]
+name = "Get User Details"
+method = "GET"
+path = "/users/1"
+headers = ["Accept: application/json"]

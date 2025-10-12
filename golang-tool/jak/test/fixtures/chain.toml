@@ -1,0 +1,38 @@
+base_url = "http://api.example.com"
+timeout = 5
+concurrency = false
+ignore_fail = false
+
+[[request]]
+name = "Auth"
+method = "POST"
+path = "/auth"
+headers = ["Content-Type: application/json"]
+json_body = """
+{
+  "username": "testuser",
+  "password": "password123"
+}
+"""
+extract = { token = "access_token" }
+
+[[request]]
+name = "Get Profile"
+method = "GET"
+path = "/profile"
+headers = [
+  "Accept: application/json",
+  "Authorization: Bearer ${token}"
+]
+depends_on = "Auth"
+extract = { user_id = "id" }
+
+[[request]]
+name = "Get User Posts"
+method = "GET"
+path = "/users/${user_id}/posts"
+headers = [
+  "Accept: application/json",
+  "Authorization: Bearer ${token}"
+]
+depends_on = "Get Profile"

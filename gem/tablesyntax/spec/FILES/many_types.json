@@ -1,0 +1,14 @@
+{
+  "keys": ["title", "metadata"],
+  "table_kvs": [
+    { "title": "string", "metadata": "i am string" },
+    { "title": "integer", "metadata": 1 },
+    { "title": "float", "metadata": 3.14 },
+    { "title": "array", "metadata": [1, 2, "a", "b"] },
+    { "title": "array in array", "metadata": [1, 2, ["a", "b"]] },
+    { "title": "map", "metadata": { "a": 1, "b": 2 } },
+    { "title": "map in map", "metadata": { "a": { "b": 2 } } },
+    { "title": "repeat string", "metadata": "variable * 987" },
+    { "title": "show nil", "metadata": null }
+  ]
+}

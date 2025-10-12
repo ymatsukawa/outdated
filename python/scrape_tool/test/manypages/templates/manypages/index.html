@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <title>This is many page for test</title>
+        <meta name="description" content="django test page">
+        <meta name="keywords" content="django test template">
+    </head>
+    <body>
+        <div>
+            <h1>Hello this is page {{ pages.number }}</h1>
+            {% if pages.has_previous %}
+                <div id="previous">
+                    <p><a href="/manypages?page=1">&laquo; first</a></p>
+                    <p><a href="/manypages?page={{ pages.previous_page_number }}">previous</a></p>
+                </div>
+            {% else %}
+                <div id="previous">
+                    <p>&laquo; first</p>
+                    <p>previous</a>       
+                </div>
+            {% endif %}
+                <div id="current">
+                    Page {{ pages.number }} of {{ pages.paginator.num_pages }}.
+                </div>
+            {% if pages.has_next %}
+                <div id="next">
+                    <p><a href="/manypages?page={{ pages.next_page_number }}">next</a></p>
+                    <p><a href="/manypages?page={{ pages.paginator.num_pages }}">last &raquo;</a></p>
+                </div>
+            {% endif %}
+        </div>
+    </body>
+</html>

@@ -1,0 +1,27 @@
+{
+    "download": {
+        "delay_sec": 3.0
+    },
+    "feed": {
+        "/tmp/scrape/result_prod.json" : {
+            "format": "json",
+            "encoding": "utf8"
+        }
+    },
+    "targets": [
+        {
+            "name": "example.com",
+            "url": "http://example.com",
+            "search": [
+                {
+                    "desc": "each_p",
+                    "xpath": "/html/body/div[1]/p"
+                },
+                {
+                    "desc": "title",
+                    "xpath": "/html/head/title"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,44 @@
+# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# keep
+!/tmp/.keep
+
+# Test binary, built with `go test -c`
+*.test
+
+# enc, dec file on test
+*.enc
+*.dec
+
+# test trash
+/test_util/mock_data/encrypt_me.txt.enc
+/test_util/mock_data/encrypt_me.txt.enc
+
+# Output of the go coverage tool, specifically when used with LiteIDE
+*.out
+
+# Dependency directories (remove the comment below to include it)
+vendor/
+
+# Go workspace file
+go.work
+
+# IDE specific files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# temp dir
+/tmp
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes

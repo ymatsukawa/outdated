@@ -1,0 +1,10 @@
+{
+  "method": "DELETE",
+  "scheme": "http",
+  "host": "localhost:3000",
+  "path": "/example/paper",
+  "headers": {},
+  "params": {
+    "paper_id": 123
+  }
+}

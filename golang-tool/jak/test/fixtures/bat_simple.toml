@@ -1,0 +1,10 @@
+base_url = "http://api.example.com"
+timeout = 5
+concurrency = false
+ignore_fail = true
+
+[[request]]
+name = "Get Users"
+method = "GET"
+path = "/users"
+headers = ["Accept: application/json"]

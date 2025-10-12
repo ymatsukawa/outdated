@@ -1,0 +1,7 @@
+create_table "articles", force: :cascade do |t|
+  t.string :title, null: false, default: ''
+  t.string :text, null: false, default: ''
+  t.boolean :archived, null: false, default: false
+
+  t.timestamps
+end

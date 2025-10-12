@@ -1,0 +1,11 @@
+{
+  "method": "PUT",
+  "scheme": "http",
+  "host": "localhost:3000",
+  "path": "/example/clothes",
+  "headers": {},
+  "params": {
+    "necktie": "armani",
+    "suit": "canali"
+  }
+}

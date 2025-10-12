@@ -1,0 +1,6 @@
+*.swp
+
+# experiment files
+*.dat
+*.pem
+*.sig

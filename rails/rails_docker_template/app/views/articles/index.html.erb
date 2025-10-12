@@ -1,0 +1,16 @@
+<table>
+  <tr>
+    <th>title</th>
+    <th>text</th>
+    <th>&nbsp;</th>
+  </tr>
+  <% @articles.each do |article| %>
+    <tr>
+      <td><%= link_to article.title, article_path(article.id) %></td>
+      <td><%= article.text %></td>
+      <td><%= button_to 'delete', article_path(article.id), method: :delete %>
+    </tr>
+  <% end %>
+</table>
+
+<%= link_to 'new article', new_article_path %>

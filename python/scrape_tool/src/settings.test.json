@@ -1,0 +1,39 @@
+{
+    "download": {
+        "delay_sec": 3.0
+    },
+    "feed": {
+        "/tmp/scrape_test/test_result.json" : {
+            "format": "json",
+            "encoding": "utf8"
+        }
+    },
+    "targets": [
+        {
+            "name": "mytestpage_mono",
+            "url": "http://test:5000/monopage",
+            "search": [
+                {
+                    "desc": "each_p",
+                    "xpath": "/html/body/div[1]/p"
+                },
+                {
+                    "desc": "title",
+                    "xpath": "/html/head/title"
+                }
+            ]
+        },
+        {
+            "name": "mytestpage_many",
+            "url": "http://test:5000/manypages?page=1",
+            "search": [
+                {
+                    "desc": "header",
+                    "xpath": "/html/body/div[1]/h1",
+                    "next_xpath_href": "/html/body/div[1]/div[3]/p[1]/a/@href",
+                    "max_crawl_page": 2
+                }
+            ]
+        }
+    ]
+}

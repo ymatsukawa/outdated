@@ -1,0 +1,7 @@
+{
+  "method": "GET",
+  "scheme": "http",
+  "host": "localhost:3000",
+  "path": "/example/html",
+  "headers": {}
+}

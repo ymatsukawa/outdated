@@ -1,0 +1,11 @@
+{
+  "method": "POST",
+  "scheme": "http",
+  "host": "localhost:3000",
+  "path": "/example/machine",
+  "headers": {},
+  "params": {
+    "nut": 10,
+    "iron_plate": 2
+  }
+}
